@@ -13,6 +13,7 @@ module Resque
       show_access_denied
     end
 
+    # Resque::Server Base
     post "/queues/:id/remove" do
       redirect u('no_act')
     end
@@ -30,6 +31,41 @@ module Resque
     end
 
     get "/failed/remove/:index/?" do
+      redirect u('no_act')
+    end
+
+    # Resque::Retry
+    post '/retry/:timestamp/remove' do
+      redirect u('no_act')
+    end
+
+    post '/retry/:timestamp/jobs/:id/remove' do
+      redirect u('no_act')
+    end
+
+    # Resque::Scheduler
+    post "/schedule/requeue" do
+      redirect u('no_act')
+    end
+    post "/delayed/queue_now" do
+      redirect u('no_act')
+    end
+
+    post "/delayed/clear" do
+      redirect u('no_act')
+    end
+
+    # Resque::Cleaner
+    post "/cleaner_exec" do
+      redirect u('no_act')
+    end
+
+    get "/cleaner_dump" do
+      redirect u('no_act')
+    end
+
+    # Resque::History
+    post "/history/clear" do
       redirect u('no_act')
     end
   end
