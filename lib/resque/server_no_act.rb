@@ -19,6 +19,10 @@ module Resque
       show(page.to_sym, false).gsub(/\s{1,}/, ' ')
     end
 
+    get "/no_act" do
+      show :no_act
+    end
+
     # to make things easier on ourselves
     get "/?" do
       redirect url_path(:overview)
