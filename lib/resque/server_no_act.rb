@@ -21,7 +21,7 @@ module Resque
     end
 
     get "/no_act" do
-      erb local_template('no_act.erb')
+      erb File.read(File.join(File.dirname(__FILE__), "server_no_act/views/no_act.erb"))
     end
 
     # to make things easier on ourselves
