@@ -9,7 +9,7 @@ if defined? Encoding
 end
 
 module Resque
-  class ServerNoAct < Server
+  class ServerNoAct < Resque::Server
     dir = File.dirname(File.expand_path(__FILE__))
 
     set :views,  "#{dir}/server/views"
