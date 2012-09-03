@@ -4,6 +4,7 @@ end
 
 module Resque
   class ServerNoAct < Server
+
     def show(page, layout = true)
       response["Cache-Control"] = "max-age=0, private, must-revalidate"
       begin
@@ -20,7 +21,7 @@ module Resque
     end
 
     get "/no_act" do
-      show :no_act
+      erb local_template('retry.erb')
     end
 
     # to make things easier on ourselves
@@ -81,6 +82,15 @@ module Resque
     get "/failed/remove/:index/?" do
       # Resque::Failure.remove(params[:index])
       redirect u('no_act')
+    end
+
+    # Helper method stolen from rescue-retry.
+    module Helpers
+      # reads a 'local' template file.
+      def local_template(path)
+        # Is there a better way to specify alternate template locations with sinatra?
+        File.read(File.join(File.dirname(__FILE__), "server_no_act/views/#{path}"))
+      end
     end
   end
 end
