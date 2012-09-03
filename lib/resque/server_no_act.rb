@@ -4,6 +4,15 @@ end
 
 module Resque
   class ServerNoAct < Server
+    dir = File.dirname(File.expand_path(__FILE__))
+
+    if respond_to? :public_folder
+      set :public_folder, "#{dir}/server_no_act/public"
+    else
+      set :public, "#{dir}/server_no_act/public"
+    end
+
+    set :static, true
 
     def show_access_denied
       erb File.read(File.join(File.dirname(__FILE__), "server_no_act/views/no_act.erb"))
