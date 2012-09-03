@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "resque-web_no_act"
   gem.homepage = "http://github.com/ticktricktrack/resque-web_no_act"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Look don't touch!}
+  gem.description = %Q{A stripped version of the Resque web interface that's safe to use by not so trustworthy personnel. You get all the same information as the regular interface, but can't delete or retry anything.}
   gem.email = "ticktricktrack@gmail.com"
   gem.authors = ["Rainer Kuhn"]
   # dependencies defined in Gemfile
