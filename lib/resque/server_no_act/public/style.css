@@ -12,7 +12,7 @@ body { padding:0; margin:0; }
 
 .subnav { padding:2px 5% 7px 5%; background:#2EBD11; font-size:90%;}
 .subnav li { display:inline;}
-.subnav li a { color:#fff; text-decoration:none; margin-right:10px; display:inline-block; background:#dd5b5b; padding:5px; -webkit-border-radius:3px; -moz-border-radius:3px;}
+.subnav li a { color:#fff; text-decoration:none; margin-right:10px; display:inline-block; background:#4D963E; padding:5px; -webkit-border-radius:3px; -moz-border-radius:3px;}
 .subnav li.current a { background:#fff; font-weight:bold; color:#2EBD11;}
 .subnav li a:active { background:#b00909;}
 
