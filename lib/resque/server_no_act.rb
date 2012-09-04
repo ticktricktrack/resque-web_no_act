@@ -73,6 +73,10 @@ module Resque
       redirect u('no_act')
     end
 
+    post "/cleaner_stale" do
+      redirect u('no_act')
+    end
+
     # Resque::History
     post "/history/clear" do
       redirect u('no_act')
