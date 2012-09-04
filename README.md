@@ -23,7 +23,7 @@ routes.rb
 
 #### Authentication
 
-I found authentication a bit tricky, since subclassing will using the parents authentication as well. Note: This only works if both have different namespaces, so ```/resque``` and ```/monitor``` works for me. ```/resque``` and ```/resque_no_act``` does not.
+I found authentication a bit tricky, since subclassing will use the parents authentication as well. Here is what I did to have different passwords. Note: This only works if both have different namespaces, so ```/resque``` and ```/monitor``` works for me. ```/resque``` and ```/resque_no_act``` does not.
 
 
 ```ruby
