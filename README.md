@@ -18,7 +18,29 @@ Only mounting via routes is available, not standalone executable.
 routes.rb
 
 ```ruby
-  mount Resque::ServerNoAct.new, :at => "/resque_no_act"
+  mount Resque::ServerNoAct.new, :at => "/monitor"
+```
+
+#### Authentication
+
+I found authentication a bit tricky, since subclassing will using the parents authentication as well. Note: This only works if both have different namespaces, so ```/resque``` and ```/monitor``` works for me. ```/resque``` and ```/resque_no_act``` does not.
+
+
+```ruby
+class Resque::ServerOriginal < Resque::Server
+end
+
+# Set the AUTH env variable to your basic auth password to protect Resque
+AUTH_PASSWORD = Settings.resque_server_password
+if AUTH_PASSWORD
+  Resque::ServerOriginal.use Rack::Auth::Basic, "Resque Interface" do |username, password|
+    password == AUTH_PASSWORD
+  end
+end
+
+Resque::ServerNoAct.use Rack::Auth::Basic, "Child Proof Resque Interface" do |username, password|
+  password == 'secret'
+end
 ```
 
 #### Contributing to resque-web\_no\_act
