@@ -30,12 +30,8 @@ I found authentication a bit tricky, since subclassing will use the parents auth
 class Resque::ServerOriginal < Resque::Server
 end
 
-# Set the AUTH env variable to your basic auth password to protect Resque
-AUTH_PASSWORD = Settings.resque_server_password
-if AUTH_PASSWORD
-  Resque::ServerOriginal.use Rack::Auth::Basic, "Resque Interface" do |username, password|
-    password == AUTH_PASSWORD
-  end
+Resque::ServerOriginal.use Rack::Auth::Basic, "Resque Interface" do |username, password|
+  password == 'big_secret'
 end
 
 Resque::ServerNoAct.use Rack::Auth::Basic, "Child Proof Resque Interface" do |username, password|
